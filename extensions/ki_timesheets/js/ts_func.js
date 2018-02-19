@@ -1,6 +1,6 @@
 /**
  * This file is part of
- * Kimai - Open Source Time Tracking // https://www.kimai.org
+ * Kimai - Open Source Time Tracking // http://www.kimai.org
  * (c) 2006-2009 Kimai-Development-Team
  *
  * Kimai is free software; you can redistribute it and/or modify
@@ -72,7 +72,7 @@ function ts_ext_get_dimensions() {
 	timeSheet_height = pageHeight() - 224 - headerHeight() - 28;
 }
 
-/**
+/**bei Dauer
  * Hover a row if the mouse is over it for more than half a second.
  */
 function ts_ext_applyHoverIntent() {
@@ -533,6 +533,8 @@ function ts_durationToTime() {
 	end = ts_getEndDate();
 	durationArray = $("#duration").val().split(/:|\./);
 	if (end != null && durationArray.length > 0 && durationArray.length < 4) {
+        // enable decimal input e.g. 1,5
+        durationArray[0] = durationArray[0].replace(",",".");
 		secs = durationArray[0] * 3600;
 		if (durationArray.length > 1) {
 			secs += durationArray[1] * 60;

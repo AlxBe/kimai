@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is part of
- * Kimai - Open Source Time Tracking // https://www.kimai.org
+ * Kimai - Open Source Time Tracking // http://www.kimai.org
  * (c) Kimai-Development-Team since 2006
  *
  * Kimai is free software; you can redistribute it and/or modify
@@ -290,7 +290,8 @@ return array(
     'timezone' => 'Zeitzone',
     'dateAndTimeHelp' => '<strong>Zeiten und Datumseinträge müssen im folgenden Format passieren:</strong><br />
         Datum:  DD.MM.YYYY<br />
-        Zeiten: HH:MM:SS oder HH:MM oder nur HH. Ausgelassene Stellen werden auf 0 gesetzt.',
+        Zeiten: HH:MM:SS oder HH:MM oder nur HH. Ausgelassene Stellen werden auf 0 gesetzt.<br />
+        Statt dem : kann auch . verwendet werden. Mit , können Stunden auch im Dezimalformat eingegeben werden (1,5 ergibt 01:30:00)',
     'defaultTimezone' => 'Zeitzone für neue Benutzer und Kunden',
     'editLimitPart1' => 'Es können keine Einträge hinzugefügt oder bearbeitet werden, die',
     'editLimitPart2' => 'Tag(e) und',
