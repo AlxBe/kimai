@@ -345,6 +345,10 @@ switch ($axAction) {
                     } else {
                         $database->project_edit($id, $data);
                     }
+                    // add projectID to project name
+                    $data['name'] = $data['name'] . sprintf(' (P%03d.%03d)', (int) ($id - $id % 1000)/1000,$id % 1000);
+                    $database->project_edit($id, $data);
+                    // end
 
                     if (isset($_REQUEST['projectGroups'])) {
                         $database->assign_projectToGroups($id, $_REQUEST['projectGroups']);

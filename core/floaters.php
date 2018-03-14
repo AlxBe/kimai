@@ -158,6 +158,8 @@ switch ($axAction) {
      */
     case 'add_edit_project':
         $oldGroups = array();
+        $nameWoProjectID = '';
+        $res = array();
         if ($id) {
             $oldGroups = $database->project_get_groupIDs($id);
         }
@@ -173,6 +175,13 @@ switch ($axAction) {
         if ($id) {
             $data = $database->project_get_data($id);
             if ($data) {
+                // remove project ID from project name
+                $nameWoProjectID = $data['name'];
+                if (preg_match('/ \(P[0-9]{3}\.[0-9]{3}\)/',$data['name'], $res)) {
+                    $nameWoProjectID = substr($data['name'], 0, strpos($data['name'],$res[0]));
+                    $data['name'] = $nameWoProjectID;
+                }
+            // end
                 $view->assign('name', $data['name']);
                 $view->assign('comment', $data['comment']);
                 $view->assign('visible', $data['visible']);
