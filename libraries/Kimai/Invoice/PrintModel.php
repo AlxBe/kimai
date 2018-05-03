@@ -28,7 +28,7 @@ class Kimai_Invoice_PrintModel
     /**
      * @var array
      */
-    private $entries = array();
+    private $entries = [];
     /**
      * @var int
      */
@@ -36,7 +36,7 @@ class Kimai_Invoice_PrintModel
     /**
      * @var array
      */
-    private $customer = array();
+    private $customer = [];
     /**
      * @var int
      */
@@ -56,7 +56,7 @@ class Kimai_Invoice_PrintModel
     /**
      * @var array
      */
-    private $projects = array();
+    private $projects = [];
     /**
      * @var string
      */
@@ -97,7 +97,7 @@ class Kimai_Invoice_PrintModel
      */
     public function toArray()
     {
-        return array(
+        return [
             'entries'       => $this->getEntries(), // array
             'amount'        => $this->getAmount(),
             'customer'      => $this->getCustomer(), // array
@@ -114,7 +114,7 @@ class Kimai_Invoice_PrintModel
             'dueDate'       => $this->getDueDate(),
             'currencySign'  => $this->getCurrencySign(),
             'currencyName'  => $this->getCurrencyName()
-        );
+        ];
     }
 
     /**

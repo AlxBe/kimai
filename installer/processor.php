@@ -65,20 +65,20 @@ function getpass()
 
 $axAction = strip_tags($_REQUEST['axAction']);
 
-$javascript = "";
+$javascript = '';
 $errors = 0;
 
 switch ($axAction) {
 
     /**
      * Check for the requirements of Kimai:
-     *  - PHP major version >= 5.4
+     *  - PHP major version >= 5.5
      *  - MySQLi extension available
      *  - iconv extension available
      *  - memory limit should be at least 20 MB for reliable PDF export
      */
-    case "checkRequirements":
-        if (version_compare(PHP_VERSION, '5.4') < 0) {
+    case 'checkRequirements':
+        if (version_compare(PHP_VERSION, '5.5') < 0) {
             $errors++;
             $javascript .= "$('div.sp_phpversion').addClass('fail');";
         }
@@ -118,7 +118,7 @@ switch ($axAction) {
     /**
      * Check access rights to autoconf.php, the logfile and the temporary folder.
      */
-    case "checkRights":
+    case 'checkRights':
         if ((file_exists("../includes/autoconf.php") && !is_writeable("../includes/autoconf.php")) || !is_writeable("../includes/")) {
             $errors++;
             $javascript .= "$('span.ch_autoconf').addClass('fail');";
@@ -146,8 +146,8 @@ switch ($axAction) {
     /**
      * Create the autoconf.php file.
      */
-    case "write_config":
-        include "../includes/func.php";
+    case 'write_config':
+        include '../includes/func.php';
         // special characters " and $ are escaped
         $database = $_REQUEST['database'];
         $hostname = $_REQUEST['hostname'];
@@ -159,7 +159,7 @@ switch ($axAction) {
         $salt = createPassword(20);
         $timezone = $_REQUEST['timezone'];
 
-        $kimaiConfig = new Kimai_Config(array(
+        $kimaiConfig = new Kimai_Config([
             'server_prefix' => $prefix,
             'server_hostname' => $hostname,
             'server_database' => $database,
@@ -168,7 +168,7 @@ switch ($axAction) {
             'server_charset' => $charset,
             'defaultTimezone' => $timezone,
             'password_salt' => $salt
-        ));
+        ]);
         Kimai_Registry::setConfig($kimaiConfig);
 
         write_config_file($database, $hostname, $username, $password, $charset, $prefix, $lang, $salt, $timezone);
@@ -186,7 +186,7 @@ switch ($axAction) {
 
         $db_error = false;
         $result = false;
-        $config = new Kimai_Config(array());
+        $config = new Kimai_Config([]);
 
         $database = new Kimai_Database_Mysql($config, false);
         $database->connect($hostname, null, $username, $password, true);
