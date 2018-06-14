@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "4417541ccef3b5b81914417c2da4f950",
@@ -258,6 +258,7 @@
                 "ZF1",
                 "framework"
             ],
+            "abandoned": "zendframework/zendframework",
             "time": "2016-09-08T14:50:34+00:00"
         }
     ],
